@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\ApiEcoleController;
+use App\Http\Controllers\Api\ApiSectionController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,5 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
-    'ecoles' => ApiEcoleController::class
+    'ecoles' => ApiEcoleController::class,
+    'sections' => ApiSectionController::class
+
 ]);
