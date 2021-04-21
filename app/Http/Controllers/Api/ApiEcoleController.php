@@ -18,7 +18,10 @@ class ApiEcoleController extends Controller
     public function index()
     {
         $ecole = Ecole::all();
-        return $ecole->toJson();
+        return response()->json([
+            'status' => 'success',
+            'data' => $ecole
+        ]);
     }
 
     /**
@@ -30,7 +33,11 @@ class ApiEcoleController extends Controller
     public function store(Request $request)
     {
         $ecole = Ecole::create($request->all());
-        return $ecole->toJson();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $ecole
+        ]);
     }
 
     /**
@@ -39,9 +46,22 @@ class ApiEcoleController extends Controller
      * @param  \App\Models\Ecole  $ecole
      * @return \Illuminate\Http\Response
      */
-    public function show(Ecole $ecole)
+    public function show(int $ecole)
     {
-        return $ecole->toJson();
+        $ecol = Ecole::find($ecole);
+        if (!is_null($ecol)) {
+            return response()->json([
+                'status' => 'success',
+                'data' => $ecol
+            ]);
+           
+        } 
+            return response()->json([
+                'status' => 'error',
+                'message' => 'id is not existe in database'
+            ], 401);
+        
+       
     }
 
     /**
@@ -56,7 +76,10 @@ class ApiEcoleController extends Controller
         $ecol = Ecole::find($ecole);
         $ecol->update($request->all());
 
-        return $ecol->toJson();
+        return response()->json([
+            'status' => 'success',
+            'data' => $ecol
+        ]);
     }
 
     /**
@@ -68,8 +91,22 @@ class ApiEcoleController extends Controller
     public function destroy(Ecole $ecole)
     {
         $ecol = Ecole::find($ecole);
-        $ecol->delete();
 
-        return "success";
+    
+        if (!is_null($ecol)) {
+            
+            $ecol->delete();
+
+            return response()->json([
+                'status' => 'success',
+            ]);
+           
+        } 
+            return response()->json([
+                'status' => 'error',
+                'message' => 'id is not existe in database'
+            ]);
+
+       
     }
 }

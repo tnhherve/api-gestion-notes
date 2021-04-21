@@ -14,6 +14,10 @@ class EcoleCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        //return parent::toArray($request);
+        return [
+            'message' => 'succes',
+            'data' => $this->collection
+        ];
     }
 }
