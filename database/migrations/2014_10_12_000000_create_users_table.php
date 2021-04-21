@@ -16,7 +16,6 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('ecole_id')->nullable();
-            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -26,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->date('date_naissance');
             $table->string('avatar');
             $table->rememberToken();
-            $table->foreign('ecole_id')->references('id')->on('ecoles')->onDelete('set null');
+            $table->foreign('ecole_id')->references('id')->on('ecoles')->onDelete('restrict');
             $table->timestamps();
         });
     }

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Section;
+use \App\Models\Ecole;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        \App\Models\Ecole::factory(10)->create();
+        Ecole::factory(10)->create();
+        //$this->call(SectionSeeder::class)
+        Section::factory()->count(5)->create();
     }
 }
