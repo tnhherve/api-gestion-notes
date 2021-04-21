@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Ecole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Resources\EcoleCollection;
 
@@ -19,7 +20,7 @@ class ApiEcoleController extends Controller
     {
         $ecole = Ecole::all();
         return response()->json([
-            'status' => 'success',
+            'status' => true,
             'data' => $ecole
         ]);
     }
@@ -32,10 +33,22 @@ class ApiEcoleController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'nom_ecole' => 'required|string'
+        ]);
+
+        if ($validator->fails())
+        {
+            return response()->json([
+                'status'=> false,
+                'message' => $validator->errors()
+            ], 400);
+        }
+
         $ecole = Ecole::create($request->all());
 
         return response()->json([
-            'status' => 'success',
+            'status' => true,
             'data' => $ecole
         ]);
     }
@@ -46,21 +59,13 @@ class ApiEcoleController extends Controller
      * @param  \App\Models\Ecole  $ecole
      * @return \Illuminate\Http\Response
      */
-    public function show(int $ecole)
+    public function show(Ecole $ecole)
     {
-        $ecol = Ecole::find($ecole);
-        if (!is_null($ecol)) {
-            return response()->json([
-                'status' => 'success',
-                'data' => $ecol
-            ]);
-           
-        } 
-            return response()->json([
-                'status' => 'error',
-                'message' => 'id is not existe in database'
-            ], 401);
         
+        return response()->json([
+            'status' => true,
+            'data' => $ecole
+        ]);
        
     }
 
@@ -71,15 +76,30 @@ class ApiEcoleController extends Controller
      * @param  \App\Models\Ecole  $ecole
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $ecole)
+    public function update(Request $request, Ecole $ecole)
     {
-        $ecol = Ecole::find($ecole);
-        $ecol->update($request->all());
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $ecol
+        $validator = Validator::make($request->all(),[
+            'nom_ecole' => 'required|string'
         ]);
+
+        if ($validator->fails())
+        {
+            return response()->json([
+                'status'=> false,
+                'message' => $validator->errors()
+            ], 400);
+        }
+
+        $ecole->nom_ecole = $request->nom_ecole;
+
+        if ($ecole->save()) {
+            return response()->json([
+                'status' => true,
+                'data' => $ecole
+            ]);
+        }
+
+        
     }
 
     /**
@@ -90,23 +110,18 @@ class ApiEcoleController extends Controller
      */
     public function destroy(Ecole $ecole)
     {
-        $ecol = Ecole::find($ecole);
-
-    
-        if (!is_null($ecol)) {
-            
-            $ecol->delete();
-
+        if ($ecole->delete()) {
             return response()->json([
-                'status' => 'success',
+                'status' => true,
+                'data' => $ecole
             ]);
-           
-        } 
+        }
+        else{
             return response()->json([
-                'status' => 'error',
-                'message' => 'id is not existe in database'
+                'status' => false,
+                'message' => 'Oops! the todo could not be deleted.'
             ]);
-
+        }
        
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Section;
+use Illuminate\Support\Facades\Validator;
 
 class ApiSectionController extends Controller
 {
@@ -16,7 +17,10 @@ class ApiSectionController extends Controller
     public function index()
     {
         $section = Section::all();
-        return $section->toJson();
+        return response()->json([
+            'status' => true,
+            'data' => $section
+        ]);
     }
 
     /**
@@ -27,8 +31,34 @@ class ApiSectionController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'nom_section' => 'required|string',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date',
+        ]);
+
+        if ($validator->fails())
+        {
+            return response()->json([
+                'status'=> false,
+                'message' => $validator->errors()
+            ], 400);
+        }
+
         $section = Section::create($request->all());
-        return $section->toJson();
+        
+        if ($section) {
+            return response()->json([
+                'status' => true,
+                'data' => $section
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Oops! the section could not be updated.'
+            ]);
+        }
+    
     }
 
     /**
@@ -39,7 +69,10 @@ class ApiSectionController extends Controller
      */
     public function show(Section $section)
     {
-        return $section->toJson();
+        return response()->json([
+            'status' => true,
+            'data' => $section
+        ]);
     }
 
     /**
@@ -49,12 +82,37 @@ class ApiSectionController extends Controller
      * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $section)
+    public function update(Request $request, Section $section)
     {
-        $sect = Section::find($section);
-        $sect->update($request->all());
+        $validator = Validator::make($request->all(),[
+            'nom_section' => 'required|string',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date',
+        ]);
 
-        return $sect->toJson();
+        if ($validator->fails())
+        {
+            return response()->json([
+                'status'=> false,
+                'message' => $validator->errors()
+            ], 400);
+        }
+
+        $section->nom_section = $request->nom_section;
+        $section->date_debut = $request->date_debut;
+        $section->date_fin = $request->date_fin;
+
+        if ($section->save()) {
+            return response()->json([
+                'status' => true,
+                'data' => $section
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Oops! the section could not be updated.'
+            ]);
+        }
     }
 
     /**
@@ -65,9 +123,17 @@ class ApiSectionController extends Controller
      */
     public function destroy(Section $section)
     {
-        $sect = Section::find($section);
-        $sect->delete();
-
-        return "success";
+        if ($section->delete()) {
+            return response()->json([
+                'status' => true,
+                'data' => $section
+            ]);
+        }
+        else{
+            return response()->json([
+                'status' => false,
+                'message' => 'Oops! the section could not be deleted.'
+            ]);
+        }
     }
 }

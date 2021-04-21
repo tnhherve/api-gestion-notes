@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TypeEvaluation;
+use Illuminate\Support\Facades\Validator;
 
 class TypeEvaluationController extends Controller
 {
@@ -16,7 +17,10 @@ class TypeEvaluationController extends Controller
     public function index()
     {
         $typeEvaluation = TypeEvaluation::all();
-        return $typeEvaluation->toJson();
+        return response()->json([
+            'status' => true,
+            'data' => $typeEvaluation
+        ]);
     }
 
     /**
@@ -27,8 +31,32 @@ class TypeEvaluationController extends Controller
      */
     public function store(Request $request)
     {
-        $ecole = TypeEvaluation::create($request->all());
-        return $typeEvaluation->toJson();
+        $validator = Validator::make($request->all(),[
+            'nom_type' => 'required|string',
+            'ponderation' => 'required|numeric',
+        ]);
+
+        if ($validator->fails())
+        {
+            return response()->json([
+                'status'=> false,
+                'message' => $validator->errors()
+            ], 400);
+        }
+
+        $typeEvaluation = TypeEvaluation::create($request->all());
+        
+        if ($typeEvaluation) {
+            return response()->json([
+                'status' => true,
+                'data' => $typeEvaluation
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Oops! the typeEvaluation could not be updated.'
+            ]);
+        }
     }
 
     /**
@@ -39,7 +67,10 @@ class TypeEvaluationController extends Controller
      */
     public function show(TypeEvaluation $typeEvaluation)
     {
-        return $typeEvaluation->toJson();
+        return response()->json([
+            'status' => true,
+            'data' => $typeEvaluation
+        ]);
     }
 
     /**
@@ -49,12 +80,35 @@ class TypeEvaluationController extends Controller
      * @param  \App\Models\TypeEvaluation  $typeEvaluation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $typeEvaluation)
+    public function update(Request $request, TypeEvaluation $typeEvaluation)
     {
-        $typeEval = TypeEvaluation::find($typeEvaluation);
-        $typeEval->update($request->all());
+        $validator = Validator::make($request->all(),[
+            'nom_type' => 'required|string',
+            'ponderation' => 'required|numeric',
+        ]);
 
-        return $typeEval->toJson();
+        if ($validator->fails())
+        {
+            return response()->json([
+                'status'=> false,
+                'message' => $validator->errors()
+            ], 400);
+        }
+
+        $typeEvaluation->nom_type = $request->nom_type;
+        $typeEvaluation->ponderation = $request->ponderation;
+        
+        if ($typeEvaluation->save()) {
+            return response()->json([
+                'status' => true,
+                'data' => $typeEvaluation
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Oops! the typeEvaluation could not be updated.'
+            ]);
+        }
     }
 
     /**
@@ -65,9 +119,17 @@ class TypeEvaluationController extends Controller
      */
     public function destroy(TypeEvaluation $typeEvaluation)
     {
-        $typeEval = EcolTypeEvaluatione::find($typeEvaluation);
-        $typeEval->delete();
-
-        return "success";
+        if ($typeEvaluation->delete()) {
+            return response()->json([
+                'status' => true,
+                'data' => $typeEvaluation
+            ]);
+        }
+        else{
+            return response()->json([
+                'status' => false,
+                'message' => 'Oops! the typeEvaluation could not be deleted.'
+            ]);
+        }
     }
 }
