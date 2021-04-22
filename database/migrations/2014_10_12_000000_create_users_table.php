@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('prenom');
             $table->string('telephone');
             $table->date('date_naissance');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->foreign('ecole_id')->references('id')->on('ecoles')->onDelete('restrict');
             $table->timestamps();

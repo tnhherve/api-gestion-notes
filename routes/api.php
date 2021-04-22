@@ -3,9 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\ApiEcoleController;
-use App\Http\Controllers\Api\ApiSectionController;
-use App\Http\Controllers\Api\TypeEvaluationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +19,36 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResources([
-    'ecoles' => ApiEcoleController::class,
-    'sections' => ApiSectionController::class,
-    'typeEvaluations'=>TypeEvaluationController::class
-]);
+Route::group([
+        'middleware'=> 'api',
+        'namespace' => 'App\Http\Controllers\Api',
+        'prefix' => 'user'
+    ],
+    function ($router) {
+        Route::post('login', 'AuthController@login');
+        Route::post('register', 'AuthController@register');
+        Route::post('logout', 'AuthController@logout');
+        Route::get('profile', 'AuthController@profile');
+        Route::post('refresh', 'AuthController@refresh');
+
+});
+
+Route::group([
+    'middleware'=> 'api',
+    'namespace' => 'App\Http\Controllers\Api',
+],
+function ($router) {
+    Route::ApiResources([
+        'ecoles' => ApiEcoleController::class,
+        'sections' => ApiSectionController::class,
+        'typeEvaluations'=>TypeEvaluationController::class
+    ]);
+
+});
+
+// Route::apiResources([
+//     'ecoles' => ApiEcoleController::class,
+//     'sections' => ApiSectionController::class,
+//     'typeEvaluations'=>TypeEvaluationController::class
+// ]);
     
