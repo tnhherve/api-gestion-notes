@@ -19,7 +19,7 @@ class TypeEvaluationController extends Controller
         $typeEvaluation = TypeEvaluation::all();
         return response()->json([
             'status' => true,
-            'data' => $typeEvaluation
+            'evaluations' => $typeEvaluation
         ]);
     }
 
@@ -131,5 +131,21 @@ class TypeEvaluationController extends Controller
                 'message' => 'Oops! the typeEvaluation could not be deleted.'
             ]);
         }
+    }
+
+    public function getEvaluations(TypeEvaluation $typeEvaluation)
+    {
+        $evaluation = $typeEvaluation->evaluations()->get();
+        $taille = count($evaluation);
+        $sommeNote = $evaluation->sum('note');
+        return response()->json([
+            'status' => true,
+            'typeEvaluation' => $typeEvaluation,
+            'evaluations' => $evaluation,
+            'length' => $taille,
+            'note_total' => $sommeNote,
+            'note_moyenne' => $sommeNote/$taille
+            
+        ]);
     }
 }

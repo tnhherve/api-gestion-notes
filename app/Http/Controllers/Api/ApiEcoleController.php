@@ -11,6 +11,12 @@ use App\Http\Resources\EcoleCollection;
 
 class ApiEcoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -124,4 +130,6 @@ class ApiEcoleController extends Controller
         }
        
     }
+
+    
 }

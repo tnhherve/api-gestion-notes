@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\TypeEvaluation;
+use App\Models\Evaluation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TypeEvaluationFactory extends Factory
+class EvaluationFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = TypeEvaluation::class;
+    protected $model = Evaluation::class;
 
     /**
      * Define the model's default state.
@@ -22,10 +22,11 @@ class TypeEvaluationFactory extends Factory
     public function definition()
     {
         return [
-            'nom_type'=>$this->faker->creditCardType,
-            'ponderation'=>$this->faker->numerify('##'),
-            'created_at'=>date('Y-m-d H:i:s'),
-            'updated_at'=>date('Y-m-d H:i:s')
+            'type_evaluation_id' => rand(1, 7),
+            'cours_id' => rand(1, 10),
+            'titre' => $this->faker->numerify('Test#'),
+            'note' => rand(50, 99),
+            'date_evaluation' => now()
         ];
     }
 }

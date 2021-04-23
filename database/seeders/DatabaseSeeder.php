@@ -7,6 +7,8 @@ use App\Models\Section;
 use \App\Models\Ecole;
 use App\Models\TypeEvaluation;
 use App\Models\User;
+use App\Models\Cours;
+use App\Models\Evaluation;
 
 
 class DatabaseSeeder extends Seeder
@@ -18,10 +20,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        TypeEvaluation::factory(10)->create();
-        User::factory(5)->create();
+        TypeEvaluation::factory(7)->create();
+        User::factory(3)->create();
         Ecole::factory(3)->create();
-        //$this->call(SectionSeeder::class)
-        Section::factory()->count(5)->create();
+        Section::factory()->count(3)->create();
+        Cours::factory()->count(10)->create();
+        Evaluation::factory()->count(20)->create();
     }
 }

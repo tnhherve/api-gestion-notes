@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class ApiSectionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+        // $this->user = $this->guard()->user();
+    }
+
      /**
      * Display a listing of the resource.
      *
@@ -46,7 +52,7 @@ class ApiSectionController extends Controller
         }
 
         $section = Section::create($request->all());
-        
+
         if ($section) {
             return response()->json([
                 'status' => true,
@@ -135,5 +141,17 @@ class ApiSectionController extends Controller
                 'message' => 'Oops! the section could not be deleted.'
             ]);
         }
+    }
+
+    public function getCours(int $section)
+    {
+        $sections = Section::find($section);
+        $cours = $sections->cours()->get();
+
+        return response()->json([
+            'status' => true,
+            'section' => $sections,
+            'cours' => $cours
+        ]);
     }
 }

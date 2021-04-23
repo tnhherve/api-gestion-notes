@@ -1,0 +1,52 @@
++--------+-----------+--------------------------------------+-------------------------+-----------------------------------------------------------+------------+
+| Domain | Method    | URI                                  | Name                    | Action                                                    | Middleware |
++--------+-----------+--------------------------------------+-------------------------+-----------------------------------------------------------+------------+
+|        | GET|HEAD  | /                                    |                         | Closure                                                   | web        |
+|        | POST      | api/cours                            | cours.store             | App\Http\Controllers\Api\ApiCoursController@store         | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | GET|HEAD  | api/cours                            | cours.index             | App\Http\Controllers\Api\ApiCoursController@index         | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | DELETE    | api/cours/{cour}                     | cours.destroy           | App\Http\Controllers\Api\ApiCoursController@destroy       | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | PUT|PATCH | api/cours/{cour}                     | cours.update            | App\Http\Controllers\Api\ApiCoursController@update        | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | GET|HEAD  | api/cours/{cour}                     | cours.show              | App\Http\Controllers\Api\ApiCoursController@show          | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | GET|HEAD  | api/ecoles                           | ecoles.index            | App\Http\Controllers\Api\ApiEcoleController@index         | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | POST      | api/ecoles                           | ecoles.store            | App\Http\Controllers\Api\ApiEcoleController@store         | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | GET|HEAD  | api/ecoles/{ecole}                   | ecoles.show             | App\Http\Controllers\Api\ApiEcoleController@show          | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | PUT|PATCH | api/ecoles/{ecole}                   | ecoles.update           | App\Http\Controllers\Api\ApiEcoleController@update        | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | DELETE    | api/ecoles/{ecole}                   | ecoles.destroy          | App\Http\Controllers\Api\ApiEcoleController@destroy       | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | GET|HEAD  | api/sections                         | sections.index          | App\Http\Controllers\Api\ApiSectionController@index       | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | POST      | api/sections                         | sections.store          | App\Http\Controllers\Api\ApiSectionController@store       | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | DELETE    | api/sections/{section}               | sections.destroy        | App\Http\Controllers\Api\ApiSectionController@destroy     | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | GET|HEAD  | api/sections/{section}               | sections.show           | App\Http\Controllers\Api\ApiSectionController@show        | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | PUT|PATCH | api/sections/{section}               | sections.update         | App\Http\Controllers\Api\ApiSectionController@update      | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | GET|HEAD  | api/typeEvaluations                  | typeEvaluations.index   | App\Http\Controllers\Api\TypeEvaluationController@index   | api        |
+|        | POST      | api/typeEvaluations                  | typeEvaluations.store   | App\Http\Controllers\Api\TypeEvaluationController@store   | api        |
+|        | GET|HEAD  | api/typeEvaluations/{typeEvaluation} | typeEvaluations.show    | App\Http\Controllers\Api\TypeEvaluationController@show    | api        |
+|        | PUT|PATCH | api/typeEvaluations/{typeEvaluation} | typeEvaluations.update  | App\Http\Controllers\Api\TypeEvaluationController@update  | api        |
+|        | DELETE    | api/typeEvaluations/{typeEvaluation} | typeEvaluations.destroy | App\Http\Controllers\Api\TypeEvaluationController@destroy | api        |
+|        | GET|HEAD  | api/user                             |                         | Closure                                                   | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | GET|HEAD  | api/user/cours                       |                         | App\Http\Controllers\Api\CoursController@index            | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | POST      | api/user/login                       |                         | App\Http\Controllers\Api\AuthController@login             | api        |
+|        | POST      | api/user/logout                      |                         | App\Http\Controllers\Api\AuthController@logout            | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | GET|HEAD  | api/user/profile                     |                         | App\Http\Controllers\Api\AuthController@profile           | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | POST      | api/user/refresh                     |                         | App\Http\Controllers\Api\AuthController@refresh           | api        |
+|        |           |                                      |                         |                                                           | auth:api   |
+|        | POST      | api/user/register                    |                         | App\Http\Controllers\Api\AuthController@register          | api        |
++--------+-----------+--------------------------------------+-------------------------+-----------------------------------------------------------+------------+

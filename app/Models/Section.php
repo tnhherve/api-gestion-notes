@@ -9,4 +9,9 @@ class Section extends Model
 {
     use HasFactory;
     protected $fillable = ['nom_section'];
+
+    public function cours()
+    {
+        return $this->hasMany('App\Models\Cours');
+    }
 }
