@@ -9,6 +9,7 @@ use App\Models\TypeEvaluation;
 use App\Models\User;
 use App\Models\Cours;
 use App\Models\Evaluation;
+use App\Models\Evenement;
 
 
 class DatabaseSeeder extends Seeder
@@ -26,5 +27,6 @@ class DatabaseSeeder extends Seeder
         Section::factory()->count(3)->create();
         Cours::factory()->count(10)->create();
         Evaluation::factory()->count(20)->create();
+        Evenement::factory()->count(20)->create();
     }
 }

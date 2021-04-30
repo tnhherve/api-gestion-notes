@@ -19,7 +19,7 @@ class TypeEvaluationController extends Controller
         $typeEvaluation = TypeEvaluation::all();
         return response()->json([
             'status' => true,
-            'evaluations' => $typeEvaluation
+            'TypeEvaluations' => $typeEvaluation
         ]);
     }
 
@@ -69,7 +69,7 @@ class TypeEvaluationController extends Controller
     {
         return response()->json([
             'status' => true,
-            'data' => $typeEvaluation
+            'typeEvaluations' => $typeEvaluation
         ]);
     }
 

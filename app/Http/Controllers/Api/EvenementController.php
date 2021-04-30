@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cours;
+use App\Models\Evenement;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
-class CoursController extends Controller
+class EvenementController extends Controller
 {
     protected $user;
     public function __construct()
@@ -24,14 +25,13 @@ class CoursController extends Controller
      */
     public function index()
     {
-        $cours = $this->user->cours()->get();
-
+        $events = $this->user->evenements()->get();
         return response()->json([
             'status' => true,
-            'data' => $cours
+            'length' => count($events),
+            'data' => $events
         ]);
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -41,88 +41,92 @@ class CoursController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'id_section' => 'required',
-            'nom_cours' => 'required|string',
-            'seuil_reussite' => 'numeric',
+        $validator = Validator::make($request->all(), [
+            'nom_evenement' => 'required|string',
+            'date_debut' => 'date',
+            'date_fin' => 'date',
+            'lieux' => 'string',
         ]);
 
-        if ($validator->falis()) {
+        if ($validator->fails()) {
             return response()->json([
                 'status'=>false,
                 'message'=> $validator->errors()
             ]);
-        } 
+        }
 
-        $cours = new Cours();
-        $cours->section_id = $request->section_id;
-        $cours->nom_cours = $request->nom_cours;
-        $cours->seuil_reussite = $request->seuil_reussite;
+        $event = new Evenement();
+        $event->nom_evenement = $request->nom_evenement;
+        $event->lieux = $request->lieux;
+        $event->date_debut = $request->date_debut;
+        $event->date_fin = $request->date_fin;
 
-        if ($this->user->cours()->save($cours)) {
+        if ($this->user->evenements()->save($event)) {
             return response()->json([
                 'status' => true,
-                'data' => $cours
+                'data' => $event
             ]);
         } else {
             return response()->json([
                 'status' => false,
-                'message' => 'Oops! the cours could not be saved.'
+                'message' => 'Oops! the event could not be saved.'
             ]);
         }
         
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cours  $cours
+     * @param  \App\Models\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function show(Cours $cours)
+    public function show(Evenement $evenement)
     {
         return response()->json([
             'status' => true,
-            'data' => $cours
+            'data' => $evenement
         ]);
     }
-
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cours  $cours
+     * @param  \App\Models\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cours $cours)
+    public function update(Request $request, Evenement $evenement)
     {
-        $validator = Validator::make($request->all(),[
-            'id_section' => 'required',
-            'nom_cours' => 'required|string',
-            'seuil_reussite' => 'numeric|max:80',
+        $validator = Validator::make($request->all(), [
+            'nom_evenement' => 'required|string',
+            'date_debut' => 'date',
+            'date_fin' => 'date',
+            'lieux' => 'string',
         ]);
 
-        if ($validator->falis()) {
+        if ($validator->fails()) {
             return response()->json([
                 'status'=>false,
                 'message'=> $validator->errors()
             ]);
-        } 
+        }
 
-        $cours->section_id = $request->section_id;
-        $cours->nom_cours = $request->nom_cours;
-        $cours->seuil_reussite = $request->seuil_reussite;
+        $evenement->nom_evenement = $request->nom_evenement;
+        $evenement->lieux = $request->lieux;
+        $evenement->date_debut = $request->date_debut;
+        $evenement->date_fin = $request->date_fin;
 
-        if ($this->user->cours()->save($cours)) {
+        if ($this->user->evenements()->save($evenement)) {
             return response()->json([
                 'status' => true,
-                'data' => $cours
+                'data' => $evenement
             ]);
         } else {
             return response()->json([
                 'status' => false,
-                'message' => 'Oops! the cours could not be updated.'
+                'message' => 'Oops! the event could not be updated.'
             ]);
         }
     }
@@ -130,34 +134,22 @@ class CoursController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cours  $cours
+     * @param  \App\Models\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cours $cours)
+    public function destroy(Evenement $evenement)
     {
-        if ($cours->delete()) {
+        if ($evenement->delete()) {
             return response()->json([
                 'status' => true,
-                'data' => $cours
+                'data' => $evenement
             ]);
         } else {
             return response()->json([
                 'status' => false,
-                'message' => 'Oops! the cours could not be deleted.'
+                'message' => 'Oops! the event could not be deleted.'
             ]);
         }
-        
-    }
-
-    public function getEvaluations(Cours $cours)
-    {
-        $evaluation = $cours->evaluations()->get();
-
-        return response()->json([
-            'status' => true,
-            'cours' => $cours,
-            'data' => $evaluation
-        ]);
     }
 
     protected function guard()

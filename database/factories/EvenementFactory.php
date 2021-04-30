@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Cours;
+use App\Models\Evenement;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Carbon\Carbon;
 
-class CoursFactory extends Factory
+class EvenementFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Cours::class;
+    protected $model = Evenement::class;
 
     /**
      * Define the model's default state.
@@ -22,10 +23,11 @@ class CoursFactory extends Factory
     public function definition()
     {
         return [
-            'section_id' => rand(1, 3),
             'user_id' => rand(1, 3),
-            'nom_cours' => $this->faker->numerify('PROG####'),
-            'seuil_reussite' => rand(50, 80)
+            'nom_evenement' => $this->faker->numerify('Test final PROG##'),
+            'date_debut' => now(),
+            'date_fin' => Carbon::now()->addDays(10),
+            'lieux' => $this->faker->city
         ];
     }
 }

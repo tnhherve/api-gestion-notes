@@ -30,7 +30,22 @@ Route::group([
         Route::post('logout', 'AuthController@logout');
         Route::get('profile', 'AuthController@profile');
         Route::post('refresh', 'AuthController@refresh');
+
+        // Routes pour les cours de l'utilisateur connecter
         Route::get('cours', 'CoursController@index');
+        Route::get('cours/{cours}', 'CoursController@show');
+        Route::get('cours/{cours}/evaluations', 'CoursController@getEvaluations');
+        Route::post('cours', 'CoursController@store');
+        Route::put('cours/{cours}', 'CoursController@update');
+        Route::delete('cours/{cours}', 'CoursController@destroy');
+
+        //Route pour les evenemts de l'utilisateur connecter
+        Route::get('evenements', 'EvenementController@index');
+        Route::get('evenements/{evenemets}', 'EvenementController@show');
+        Route::post('evenements', 'EvenementController@store');
+        Route::put('evenements/{evenemets}', 'EvenementController@update');
+        Route::delete('evenements/{evenemets}', 'EvenementController@destroy');
+
 });
 
 Route::group([
