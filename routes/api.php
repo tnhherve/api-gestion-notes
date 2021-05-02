@@ -41,10 +41,9 @@ Route::group([
 
         //Route pour les evenemts de l'utilisateur connecter
         Route::get('evenements', 'EvenementController@index');
-        Route::get('evenements/{evenemets}', 'EvenementController@show');
         Route::post('evenements', 'EvenementController@store');
         Route::put('evenements/{evenemets}', 'EvenementController@update');
-        Route::delete('evenements/{evenemets}', 'EvenementController@destroy');
+        
 
 });
 
@@ -71,5 +70,8 @@ function ($router) {
     Route::get('cours/{cours}/evaluations', 'CoursController@getEvaluations');
     Route::get('sections/{sections}/cours', 'ApiSectionController@getCours');
     Route::get('typeEvaluations/{typeEvaluation}/evaluations', 'TypeEvaluationController@getEvaluations');
+
+    Route::get('evenements/{evenemets}', 'EvenementController@show');
+    Route::delete('evenements/{evenemets}', 'EvenementController@destroy');
 });
     
