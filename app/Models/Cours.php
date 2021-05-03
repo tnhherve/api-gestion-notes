@@ -24,4 +24,9 @@ class Cours extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function typeEvaluations()
+    {
+        return $this->belongsToMany('App\Models\TypeEvaluation', 'evaluations','cours_id','type_evaluation_id');
+    }
 }

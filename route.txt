@@ -1,87 +1,87 @@
 +--------+-----------+--------------------------------------------------+-------------------------+------------------------------------------------------------------+------------+
-| Domain | Method    | URI                                              | Name                    | Action                                                           | Middleware |
+|[32m Domain [39m|[32m Method    [39m|[32m URI                                              [39m|[32m Name                    [39m|[32m Action                                                           [39m|[32m Middleware [39m|
 +--------+-----------+--------------------------------------------------+-------------------------+------------------------------------------------------------------+------------+
 |        | GET|HEAD  | /                                                |                         | Closure                                                          | web        |
-|        | GET|HEAD  | api/cours                                        | cours.index             | App\Http\Controllers\Api\ApiCoursController@index                | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | POST      | api/cours                                        | cours.store             | App\Http\Controllers\Api\ApiCoursController@store                | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/cours/{cours}/evaluations                    |                         | App\Http\Controllers\Api\CoursController@getEvaluations          | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | DELETE    | api/cours/{cour}                                 | cours.destroy           | App\Http\Controllers\Api\ApiCoursController@destroy              | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/cours/{cour}                                 | cours.show              | App\Http\Controllers\Api\ApiCoursController@show                 | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | PUT|PATCH | api/cours/{cour}                                 | cours.update            | App\Http\Controllers\Api\ApiCoursController@update               | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/ecoles                                       | ecoles.index            | App\Http\Controllers\Api\ApiEcoleController@index                | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | POST      | api/ecoles                                       | ecoles.store            | App\Http\Controllers\Api\ApiEcoleController@store                | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | DELETE    | api/ecoles/{ecole}                               | ecoles.destroy          | App\Http\Controllers\Api\ApiEcoleController@destroy              | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | PUT|PATCH | api/ecoles/{ecole}                               | ecoles.update           | App\Http\Controllers\Api\ApiEcoleController@update               | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/ecoles/{ecole}                               | ecoles.show             | App\Http\Controllers\Api\ApiEcoleController@show                 | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/evaluations                                  | evaluations.index       | App\Http\Controllers\Api\ApiEvaluationController@index           | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | POST      | api/evaluations                                  | evaluations.store       | App\Http\Controllers\Api\ApiEvaluationController@store           | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/evaluations/{evaluation}                     | evaluations.show        | App\Http\Controllers\Api\ApiEvaluationController@show            | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | PUT|PATCH | api/evaluations/{evaluation}                     | evaluations.update      | App\Http\Controllers\Api\ApiEvaluationController@update          | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | DELETE    | api/evaluations/{evaluation}                     | evaluations.destroy     | App\Http\Controllers\Api\ApiEvaluationController@destroy         | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/sections                                     | sections.index          | App\Http\Controllers\Api\ApiSectionController@index              | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | POST      | api/sections                                     | sections.store          | App\Http\Controllers\Api\ApiSectionController@store              | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/sections/{sections}/cours                    |                         | App\Http\Controllers\Api\ApiSectionController@getCours           | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/sections/{section}                           | sections.show           | App\Http\Controllers\Api\ApiSectionController@show               | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | PUT|PATCH | api/sections/{section}                           | sections.update         | App\Http\Controllers\Api\ApiSectionController@update             | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | DELETE    | api/sections/{section}                           | sections.destroy        | App\Http\Controllers\Api\ApiSectionController@destroy            | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
+[39;49m|        | POST      | api/cours                                        | cours.store             | App\Http\Controllers\Api\ApiCoursController@store                | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/cours                                        | cours.index             | App\Http\Controllers\Api\ApiCoursController@index                | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/cours/{cours}/evaluations                    |                         | App\Http\Controllers\Api\CoursController@getEvaluations          | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | DELETE    | api/cours/{cour}                                 | cours.destroy           | App\Http\Controllers\Api\ApiCoursController@destroy              | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | PUT|PATCH | api/cours/{cour}                                 | cours.update            | App\Http\Controllers\Api\ApiCoursController@update               | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/cours/{cour}                                 | cours.show              | App\Http\Controllers\Api\ApiCoursController@show                 | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/ecoles                                       | ecoles.index            | App\Http\Controllers\Api\ApiEcoleController@index                | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | POST      | api/ecoles                                       | ecoles.store            | App\Http\Controllers\Api\ApiEcoleController@store                | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/ecoles/{ecole}                               | ecoles.show             | App\Http\Controllers\Api\ApiEcoleController@show                 | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | PUT|PATCH | api/ecoles/{ecole}                               | ecoles.update           | App\Http\Controllers\Api\ApiEcoleController@update               | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | DELETE    | api/ecoles/{ecole}                               | ecoles.destroy          | App\Http\Controllers\Api\ApiEcoleController@destroy              | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | POST      | api/evaluations                                  | evaluations.store       | App\Http\Controllers\Api\ApiEvaluationController@store           | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/evaluations                                  | evaluations.index       | App\Http\Controllers\Api\ApiEvaluationController@index           | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | PUT|PATCH | api/evaluations/{evaluation}                     | evaluations.update      | App\Http\Controllers\Api\ApiEvaluationController@update          | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/evaluations/{evaluation}                     | evaluations.show        | App\Http\Controllers\Api\ApiEvaluationController@show            | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | DELETE    | api/evaluations/{evaluation}                     | evaluations.destroy     | App\Http\Controllers\Api\ApiEvaluationController@destroy         | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | DELETE    | api/evenements/{evenemets}                       |                         | App\Http\Controllers\Api\EvenementController@destroy             | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/evenements/{evenemets}                       |                         | App\Http\Controllers\Api\EvenementController@show                | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/sections                                     | sections.index          | App\Http\Controllers\Api\ApiSectionController@index              | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | POST      | api/sections                                     | sections.store          | App\Http\Controllers\Api\ApiSectionController@store              | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/sections/{sections}/cours                    |                         | App\Http\Controllers\Api\ApiSectionController@getCours           | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | DELETE    | api/sections/{section}                           | sections.destroy        | App\Http\Controllers\Api\ApiSectionController@destroy            | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | PUT|PATCH | api/sections/{section}                           | sections.update         | App\Http\Controllers\Api\ApiSectionController@update             | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/sections/{section}                           | sections.show           | App\Http\Controllers\Api\ApiSectionController@show               | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
 |        | GET|HEAD  | api/typeEvaluations                              | typeEvaluations.index   | App\Http\Controllers\Api\TypeEvaluationController@index          | api        |
 |        | POST      | api/typeEvaluations                              | typeEvaluations.store   | App\Http\Controllers\Api\TypeEvaluationController@store          | api        |
 |        | GET|HEAD  | api/typeEvaluations/{typeEvaluation}             | typeEvaluations.show    | App\Http\Controllers\Api\TypeEvaluationController@show           | api        |
-|        | DELETE    | api/typeEvaluations/{typeEvaluation}             | typeEvaluations.destroy | App\Http\Controllers\Api\TypeEvaluationController@destroy        | api        |
 |        | PUT|PATCH | api/typeEvaluations/{typeEvaluation}             | typeEvaluations.update  | App\Http\Controllers\Api\TypeEvaluationController@update         | api        |
+|        | DELETE    | api/typeEvaluations/{typeEvaluation}             | typeEvaluations.destroy | App\Http\Controllers\Api\TypeEvaluationController@destroy        | api        |
 |        | GET|HEAD  | api/typeEvaluations/{typeEvaluation}/evaluations |                         | App\Http\Controllers\Api\TypeEvaluationController@getEvaluations | api        |
-|        | GET|HEAD  | api/user                                         |                         | Closure                                                          | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/user/cours                                   |                         | App\Http\Controllers\Api\CoursController@index                   | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | POST      | api/user/cours                                   |                         | App\Http\Controllers\Api\CoursController@store                   | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/user/cours/{cours}                           |                         | App\Http\Controllers\Api\CoursController@show                    | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | DELETE    | api/user/cours/{cours}                           |                         | App\Http\Controllers\Api\CoursController@destroy                 | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | PUT       | api/user/cours/{cours}                           |                         | App\Http\Controllers\Api\CoursController@update                  | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/user/cours/{cours}/evaluations               |                         | App\Http\Controllers\Api\CoursController@getEvaluations          | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/user/evenements                              |                         | App\Http\Controllers\Api\EvenementController@index               | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | POST      | api/user/evenements                              |                         | App\Http\Controllers\Api\EvenementController@store               | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/user/evenements/{evenemets}                  |                         | App\Http\Controllers\Api\EvenementController@show                | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | PUT       | api/user/evenements/{evenemets}                  |                         | App\Http\Controllers\Api\EvenementController@update              | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | DELETE    | api/user/evenements/{evenemets}                  |                         | App\Http\Controllers\Api\EvenementController@destroy             | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
+[39;49m|        | GET|HEAD  | api/user                                         |                         | Closure                                                          | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/user/cours                                   |                         | App\Http\Controllers\Api\CoursController@index                   | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | POST      | api/user/cours                                   |                         | App\Http\Controllers\Api\CoursController@store                   | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/user/cours/{cours}                           |                         | App\Http\Controllers\Api\CoursController@show                    | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | PUT       | api/user/cours/{cours}                           |                         | App\Http\Controllers\Api\CoursController@update                  | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | DELETE    | api/user/cours/{cours}                           |                         | App\Http\Controllers\Api\CoursController@destroy                 | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/user/cours/{cours}/evaluations               |                         | App\Http\Controllers\Api\CoursController@getEvaluations          | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/user/evenements                              |                         | App\Http\Controllers\Api\EvenementController@index               | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | POST      | api/user/evenements                              |                         | App\Http\Controllers\Api\EvenementController@store               | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | PUT       | api/user/evenements/{evenemets}                  |                         | App\Http\Controllers\Api\EvenementController@update              | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
 |        | POST      | api/user/login                                   |                         | App\Http\Controllers\Api\AuthController@login                    | api        |
-|        | POST      | api/user/logout                                  |                         | App\Http\Controllers\Api\AuthController@logout                   | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | GET|HEAD  | api/user/profile                                 |                         | App\Http\Controllers\Api\AuthController@profile                  | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
-|        | POST      | api/user/refresh                                 |                         | App\Http\Controllers\Api\AuthController@refresh                  | api        |
-|        |           |                                                  |                         |                                                                  | auth:api   |
+[39;49m|        | POST      | api/user/logout                                  |                         | App\Http\Controllers\Api\AuthController@logout                   | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | GET|HEAD  | api/user/profile                                 |                         | App\Http\Controllers\Api\AuthController@profile                  | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
+[39;49m|        | POST      | api/user/refresh                                 |                         | App\Http\Controllers\Api\AuthController@refresh                  | api[39;49m[39;49m        |[39;49m
+[39;49m|        |           |                                                  |                         |                                                                  | [39;49mauth:api   |
 |        | POST      | api/user/register                                |                         | App\Http\Controllers\Api\AuthController@register                 | api        |
 +--------+-----------+--------------------------------------------------+-------------------------+------------------------------------------------------------------+------------+

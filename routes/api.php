@@ -67,6 +67,7 @@ Route::group([
     'namespace' => 'App\Http\Controllers\Api',
 ],
 function ($router) {
+    Route::get('cours/{cours}/typeEvaluations', 'CoursController@getTypeEvaluations');
     Route::get('cours/{cours}/evaluations', 'CoursController@getEvaluations');
     Route::get('sections/{sections}/cours', 'ApiSectionController@getCours');
     Route::get('typeEvaluations/{typeEvaluation}/evaluations', 'TypeEvaluationController@getEvaluations');

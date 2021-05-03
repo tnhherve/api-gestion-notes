@@ -160,6 +160,17 @@ class CoursController extends Controller
         ]);
     }
 
+    public function getTypeEvaluations(Cours $cours)
+    {
+        $typeEvaluation = $cours->typeEvaluations()->get();
+
+        return response()->json([
+            'status' => true,
+            'cours' => $cours,
+            'data' => $typeEvaluation
+        ]);
+    }
+
     protected function guard()
     {
         return Auth::guard();
