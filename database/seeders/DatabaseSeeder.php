@@ -21,10 +21,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        TypeEvaluation::factory(7)->create();
-        User::factory(3)->create();
         Ecole::factory(3)->create();
         Section::factory()->count(3)->create();
+        TypeEvaluation::factory(7)->create();
+        User::factory(3)->create();
         Cours::factory()->count(10)->create();
         Evaluation::factory()->count(20)->create();
         Evenement::factory()->count(20)->create();
