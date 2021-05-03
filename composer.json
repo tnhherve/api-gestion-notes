@@ -13,7 +13,7 @@
         "laravel/tinker": "^2.5",
         "nesbot/carbon": "^2.46",
         "tymon/jwt-auth": "^1.0",
-        "fakerphp/faker": "^1.9.1",
+        "fakerphp/faker": "^1.9.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
