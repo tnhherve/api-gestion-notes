@@ -44,7 +44,7 @@ class CoursController extends Controller
         $validator = Validator::make($request->all(),[
             'section_id' => 'required',
             'nom_cours' => 'required|string',
-            'seuil_reussite' => 'numeric',
+            'seuil_reussite' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {
