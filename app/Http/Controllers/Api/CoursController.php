@@ -103,7 +103,7 @@ class CoursController extends Controller
             'seuil_reussite' => 'numeric|max:80',
         ]);
 
-        if ($validator->falis()) {
+        if ($validator->fails()) {
             return response()->json([
                 'status'=>false,
                 'message'=> $validator->errors()
