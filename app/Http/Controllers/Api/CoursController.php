@@ -42,7 +42,7 @@ class CoursController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'id_section' => 'required',
+            'section_id' => 'required',
             'nom_cours' => 'required|string',
             'seuil_reussite' => 'numeric',
         ]);
