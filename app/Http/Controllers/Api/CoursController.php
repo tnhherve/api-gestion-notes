@@ -47,7 +47,7 @@ class CoursController extends Controller
             'seuil_reussite' => 'numeric',
         ]);
 
-        if ($validator->falis()) {
+        if ($validator->fails()) {
             return response()->json([
                 'status'=>false,
                 'message'=> $validator->errors()
