@@ -16,7 +16,6 @@ class CreateTypeEvaluationsTable extends Migration
         Schema::create('type_evaluations', function (Blueprint $table) {
             $table->id();
             $table->string('nom_type', 100);
-            $table->decimal('ponderation', 5, 2);
             $table->timestamps();
         });
     }

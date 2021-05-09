@@ -23,9 +23,10 @@ class EvaluationFactory extends Factory
     {
         return [
             'type_evaluation_id' => rand(1, 7),
-            'cours_id' => rand(1, 10),
+            'cours_id' => rand(1, 15),
             'titre' => $this->faker->numerify('Test#'),
             'note' => rand(50, 99),
+            'ponderation'=>rand(20, 40),
             'date_evaluation' => now()
         ];
     }

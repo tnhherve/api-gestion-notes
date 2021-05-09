@@ -19,6 +19,7 @@ class CreateEvaluationsTable extends Migration
             $table->foreignId('cours_id');
             $table->string('titre', 100);
             $table->decimal('note', 5, 2);
+            $table->decimal('ponderation', 5, 2);
             $table->dateTime('date_evaluation');
             $table->foreign('type_evaluation_id')->references('id')->on('type_evaluations')->onDelete('restrict');
             $table->foreign('cours_id')->references('id')->on('cours')->onDelete('restrict');

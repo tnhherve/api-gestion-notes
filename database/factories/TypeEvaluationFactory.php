@@ -23,7 +23,6 @@ class TypeEvaluationFactory extends Factory
     {
         return [
             'nom_type'=>$this->faker->creditCardType,
-            'ponderation'=>$this->faker->numerify('##'),
             'created_at'=>date('Y-m-d H:i:s'),
             'updated_at'=>date('Y-m-d H:i:s')
         ];

@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
         Section::factory()->count(3)->create();
         TypeEvaluation::factory(7)->create();
         User::factory(3)->create();
-        Cours::factory()->count(10)->create();
-        Evaluation::factory()->count(20)->create();
-        Evenement::factory()->count(20)->create();
+        Cours::factory()->count(15)->create();
+        Evaluation::factory()->count(30)->create();
+        Evenement::factory()->count(25)->create();
     }
 }
