@@ -23,7 +23,7 @@ class CoursFactory extends Factory
     {
         return [
             'section_id' => rand(1, 3),
-            'user_id' => rand(1, 4),
+            'user_id' => rand(1, 3),
             'nom_cours' => $this->faker->numerify('PROG####'),
             'seuil_reussite' => rand(50, 80)
         ];
