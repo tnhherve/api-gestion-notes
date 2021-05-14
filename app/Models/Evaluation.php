@@ -15,5 +15,6 @@ class Evaluation extends Model
         'titre',
         'note',
         'date_evaluation'
+        'ponderation'
     ];
 }

@@ -45,7 +45,8 @@ class ApiEvaluationController extends Controller
             'cours_id' => 'required|string',
             'titre' => 'required|string',
             'note' => 'required|numeric|max:100',
-            'date_evaluation' => 'required'
+            'date_evaluation' => 'required',
+            'ponderation'=> 'required|numeric|max:90'
         ]);
 
         if ($validator->fails()) {
@@ -61,6 +62,7 @@ class ApiEvaluationController extends Controller
         $evaluation->titre = $request->titre;
         $evaluation->note = $request->note;
         $evaluation->date_evaluation = $request->date_evaluation;
+        $evaluation->ponderation = $request->ponderation;
 
         if ($evaluation->save()) {
             return response()->json([
@@ -103,7 +105,8 @@ class ApiEvaluationController extends Controller
             'cours_id' => 'required|string',
             'titre' => 'required|string',
             'note' => 'required|numeric|max:100',
-            'date_evaluation' => 'required'
+            'date_evaluation' => 'required',
+            'ponderation'=> 'required|numeric|max:90'
         ]);
 
         if ($validator->fails()) {
@@ -119,6 +122,7 @@ class ApiEvaluationController extends Controller
         $evaluation->titre = $request->titre;
         $evaluation->note = $request->note;
         $evaluation->date_evaluation = $request->date_evaluation;
+        $evaluation->ponderation = $request->ponderation;
 
         if ($evaluation->save()) {
             return response()->json([
