@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Evaluation;
+use App\Models\Cours;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -42,11 +43,11 @@ class ApiEvaluationController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'type_evaluation_id' => 'required',
-            'cours_id' => 'required|string',
+            'cours_id' => 'required',
             'titre' => 'required|string',
             'note' => 'required|numeric|max:100',
             'date_evaluation' => 'required',
-            'ponderation'=> 'required|numeric|max:90'
+            'ponderation'=> 'required|numeric|max:100'
         ]);
 
         if ($validator->fails()) {
@@ -55,6 +56,29 @@ class ApiEvaluationController extends Controller
                 'message'=> $validator->errors()
             ]);
         } 
+
+        $eval = Evaluation::find($request->cours_id);
+        
+        $sum_ponderation = 0;
+        
+        if ($val != null)
+        {
+            $sum = $eval->sum('ponderation');
+            
+            if ($sum >= 100) {
+                return response()->json([
+                    'status'=>false,
+                    'message'=> "ponderation deja egal a 100"
+                ]);
+            } else if ($request->ponderation > (100-$sum)) {
+                return response()->json([
+                    'status'=>false,
+                    'message'=> "ponderation doit etre inferieur a".(100-$sum)
+                ]);
+            }
+            
+        }
+
 
         $evaluation = new Evaluation();
         $evaluation->type_evaluation_id = $request->type_evaluation_id;
@@ -116,7 +140,28 @@ class ApiEvaluationController extends Controller
             ]);
         } 
 
+        $eval = Evaluation::find($request->cours_id);
         
+        $sum_ponderation = 0;
+        
+        if ($val != null)
+        {
+            $sum = $eval->sum('ponderation');
+            
+            if ($sum >= 100) {
+                return response()->json([
+                    'status'=>false,
+                    'message'=> "ponderation deja egal a 100"
+                ]);
+            } else if ($request->ponderation > (100-$sum)) {
+                return response()->json([
+                    'status'=>false,
+                    'message'=> "ponderation doit etre inferieur a".(100-$sum)
+                ]);
+            }
+            
+        }
+
         $evaluation->type_evaluation_id = $request->type_evaluation_id;
         $evaluation->cours_id = $request->cours_id;
         $evaluation->titre = $request->titre;
