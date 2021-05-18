@@ -155,6 +155,9 @@ class CoursController extends Controller
 
         return response()->json([
             'status' => true,
+            'total_evaluation' => count($evaluation),
+            'total_note' => $evaluation->sum('note'),
+            'moyenne' => $evaluation->sum('note')/count($evaluation),
             'cours' => $cours,
             'data' => $evaluation
         ]);
@@ -168,6 +171,13 @@ class CoursController extends Controller
             'status' => true,
             'cours' => $cours,
             'data' => $typeEvaluation
+        ]);
+    }
+
+    public function getSumPonderation(Cours $cours)
+    {
+        return response()->json([
+            'somme_ponderation_evaluation' => $cours->evaluations()->sum('ponderation')
         ]);
     }
 

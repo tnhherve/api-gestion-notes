@@ -148,4 +148,11 @@ class TypeEvaluationController extends Controller
             
         ]);
     }
+
+    public function getNomEvaluation(TypeEvaluation $typeEvaluation)
+    {
+        return response()->json([
+            'nom' => $typeEvaluation->nom_type
+        ]);
+    }
 }

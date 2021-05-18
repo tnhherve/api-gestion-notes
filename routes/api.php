@@ -39,6 +39,8 @@ Route::group([
         Route::put('cours/{cours}', 'CoursController@update');
         Route::delete('cours/{cours}', 'CoursController@destroy');
 
+        Route::get('cours/{cours}/ponderation', 'CoursController@getSumPonderation');
+
         //Route pour les evenemts de l'utilisateur connecter
         Route::get('evenements', 'EvenementController@index');
         Route::post('evenements', 'EvenementController@store');
