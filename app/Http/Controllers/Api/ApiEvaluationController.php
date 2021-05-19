@@ -61,7 +61,7 @@ class ApiEvaluationController extends Controller
         
         $sum_ponderation = 0;
         
-        if ($val != null)
+        if ($eval != null)
         {
             $sum = $eval->sum('ponderation');
             
@@ -144,7 +144,7 @@ class ApiEvaluationController extends Controller
         
         $sum_ponderation = 0;
         
-        if ($val != null)
+        if ($eval != null)
         {
             $sum = $eval->sum('ponderation');
             
