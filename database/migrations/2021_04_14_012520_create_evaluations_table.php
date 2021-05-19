@@ -15,9 +15,10 @@ class CreateEvaluationsTable extends Migration
     {
         Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('type_evaluation_id');
+            $table->foreignId('type_evaluation_id')->nullable();
             $table->foreignId('cours_id');
             $table->string('titre', 100);
+            $table->string('type_evaluation', 100);
             $table->decimal('note', 5, 2);
             $table->decimal('ponderation', 5, 2);
             $table->dateTime('date_evaluation');

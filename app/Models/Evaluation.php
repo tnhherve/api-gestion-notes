@@ -10,11 +10,11 @@ class Evaluation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'type_evaluation_id',
         'cours_id',
         'titre',
         'note',
         'date_evaluation',
-        'ponderation'
+        'ponderation',
+        'type_evaluation'
     ];
 }

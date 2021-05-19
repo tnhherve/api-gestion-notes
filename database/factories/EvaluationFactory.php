@@ -27,7 +27,8 @@ class EvaluationFactory extends Factory
             'titre' => $this->faker->numerify('Test#'),
             'note' => rand(50, 99),
             'ponderation'=>rand(20, 40),
-            'date_evaluation' => now()
+            'date_evaluation' => now(),
+            'type_evaluation'=>$this->faker->creditCardType,
         ];
     }
 }

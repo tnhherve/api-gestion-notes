@@ -42,12 +42,12 @@ class ApiEvaluationController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'type_evaluation_id' => 'required',
             'cours_id' => 'required',
             'titre' => 'required|string',
             'note' => 'required|numeric|max:100',
             'date_evaluation' => 'required',
-            'ponderation'=> 'required|numeric|max:100'
+            'ponderation'=> 'required|numeric|max:100',
+            'type_evaluation' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -81,12 +81,12 @@ class ApiEvaluationController extends Controller
 
 
         $evaluation = new Evaluation();
-        $evaluation->type_evaluation_id = $request->type_evaluation_id;
         $evaluation->cours_id = $request->cours_id;
         $evaluation->titre = $request->titre;
         $evaluation->note = $request->note;
         $evaluation->date_evaluation = $request->date_evaluation;
         $evaluation->ponderation = $request->ponderation;
+        $evaluation->type_evaluation = $request->type_evaluation;
 
         if ($evaluation->save()) {
             return response()->json([
@@ -125,12 +125,12 @@ class ApiEvaluationController extends Controller
     public function update(Request $request, Evaluation $evaluation)
     {
         $validator = Validator::make($request->all(),[
-            'type_evaluation_id' => 'required',
             'cours_id' => 'required|string',
             'titre' => 'required|string',
             'note' => 'required|numeric|max:100',
             'date_evaluation' => 'required',
-            'ponderation'=> 'required|numeric|max:90'
+            'ponderation'=> 'required|numeric|max:90',
+            'type_evaluation' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -162,12 +162,12 @@ class ApiEvaluationController extends Controller
             
         }
 
-        $evaluation->type_evaluation_id = $request->type_evaluation_id;
         $evaluation->cours_id = $request->cours_id;
         $evaluation->titre = $request->titre;
         $evaluation->note = $request->note;
         $evaluation->date_evaluation = $request->date_evaluation;
         $evaluation->ponderation = $request->ponderation;
+        $evaluation->type_evaluation = $request->type_evaluation;
 
         if ($evaluation->save()) {
             return response()->json([
