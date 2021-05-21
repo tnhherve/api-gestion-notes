@@ -157,7 +157,7 @@ class CoursController extends Controller
             'status' => true,
             'total_evaluation' => count($evaluation),
             'total_note' => $evaluation->sum('note'),
-            'moyenne' => $evaluation->sum('note')/count($evaluation),
+            'moyenne' => ($evaluation->sum('note') != 0)?$evaluation->sum('note')/count($evaluation):0.0,
             'cours' => $cours,
             'data' => $evaluation
         ]);
